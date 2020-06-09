@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+	<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+    <!--		<link href="/" rel="canonical">-->
+
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/filipelinhares/ress/master/dist/ress.min.css">
+    <!--
+    <link rel="stylesheet" href="css/site.css?ver">
+-->
+
+<!--
+    <meta property="og:site_name" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+-->
+    <style>
+      *{
+        word-break: break-all;
+      }
+      img{
+        max-width: 100%;
+      }
+      
+      ul{
+        list-style: none;
+        font-size: 1rem;
+      }
+      
+      li{
+        margin-bottom: 2rem;
+      }
+      
+      h1{
+        font-size: 2rem;
+      }
+      
+      h2{
+        font-size: 1.5rem;
+      }
+      p{
+        font-size: 1rem;
+      }
+      
+      .container-outer{
+        padding: 4rem 0;
+      }
+      
+      .container{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      @media screen and (min-width: 576px){
+        .container{
+          width: 540px;
+          margin: 0 auto;
+        }        
+      }
+      @media screen and (min-width: 768px){
+        .container{
+          width: 720px;
+          margin: 0 auto;
+        }        
+      }
+      @media screen and (min-width: 992px){
+        .container{
+          width: 960px;
+          margin: 0 auto;
+        }        
+      }
+      @media screen and (min-width: 1200px){
+        .container{
+          width: 1140px;
+          margin: 0 auto;
+        }        
+      }
+
+      
+      #chinko{
+        position: fixed;
+        top: 0;
+        right: 0;
+        padding: .5rem 1rem;
+        background-color: black;
+        color: white;
+      }
+    </style>
+	</head>
+
+<body>
+  <div id="chinko"></div>
+  <h1>レスポンシブ画像を検証するぞー！</h1>
+  <!--
+  small https://placehold.it/200x100/
+  medium https://placehold.it/400x200/
+  large https://placehold.it/600x300/
+  xlarge https://placehold.it/800x400/
+-->
+  
+  <div class="container-outer">
+    <div class="container">
+      <section>
+        <h2>https://ics.media/entry/13324/</h2>
+        <ul>
+          <li>
+            <p>img > srcset+src / size属性あり</p>
+            <img srcset="https://placehold.it/200x100/ 200w,
+              https://placehold.it/400x200/  400w,
+              https://placehold.it/600x300/ 600w"
+         src="https://placehold.it/600x300/"
+         sizes="(max-width:1280px) 100vw, 100w">
+
+          </li>
+          <li>
+            <p>img > srcset+src / size属性なし</p>
+            <img srcset="https://placehold.it/200x100/ 200w,
+              https://placehold.it/400x200/  400w,
+              https://placehold.it/600x300/ 600w"
+         sizes="(max-width:1280px) 100vw, 100w">
+
+          </li>
+          <li>
+            <p>picture > source / size属性あり</p>
+            <picture>
+              <source media="(max-width:576px)" srcset="https://placehold.it/200x100/ 200w, https://placehold.it/400x200/ 400w" sizes="100vw">
+              <source media="(max-width:768px)" srcset="https://placehold.it/400x200/ 400w, https://placehold.it/800x400/ 800w" sizes="100vw">
+              <img src="https://placehold.it/600x300/">
+            </picture>
+
+          </li>
+          <li>
+            <p>picture > source / size属性なし</p>
+            <picture>
+              <source media="(max-width:768px)" srcset="https://placehold.it/200x100/ 200w, https://placehold.it/400x200/ 400w">
+              <source media="(max-width:960px)" srcset="https://placehold.it/400x200/ 400w, https://placehold.it/800x400/ 800w">
+              <img src="https://placehold.it/600x300/">
+            </picture>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>https://developers.google.com/web/ilt/pwa/lab-responsive-images</h2>
+        <ul>
+          <li>
+            <p>img > srcset+src</p>
+            <img srcset="https://placehold.it/800x400/ 800w, https://placehold.it/600x300/ 600w, https://placehold.it/400x200/ 400w, https://placehold.it/200x100/ 200w"
+                 src="https://placehold.it/800x400/">
+          </li>
+          <li>
+            <p>img > srcsetだけ</p>
+            <img srcset="https://placehold.it/800x400/ 800w, https://placehold.it/600x300/ 600w, https://placehold.it/400x200/ 400w, https://placehold.it/200x100/ 200w"
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>まとめ</h2>
+        <p>imgにsizes属性なくてよくね？</p>
+      </section>
+    </div>
+  </div>
+  <script>
+
+  function resize() { 
+    winWidth = window.innerWidth;
+    const div = document.getElementById('chinko');
+    div.textContent=winWidth;
+  }
+    window.onresize = resize;
+    window.onload = resize;
+  </script>
+  
+</body>
+</html>
